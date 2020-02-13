@@ -24,7 +24,6 @@ def won?(board)
    board[location1] == board[location2] && board[location2] == board[location3] && board[location1] != " "
  end
 end
-won?(board)
 
 def full?(board)
   !board.any? {|x| x == " "}
