@@ -17,15 +17,12 @@ WIN_COMBINATIONS = [
   ]
 
 def won?(board)
- winner = []
-empty_board = board.all? {|x| x == " "}
-WIN_COMBINATIONS.each do |win_comb|
-    if empty_board || full?(board)
-      return false
-    elsif win_comb.all? { |value| board[value] =="X" } || win_comb.all? { |value| board[value] =="O" }
-      winner = win_comb
-    end
-  end
+ WIN_COMBINATIONS.detect do |win_combo|
+   location1 = win_combo[0]
+   location2 = win_combo[1]
+   location3 = win_combo[2]
+   board[location1] == board[location2] && board[location2] == board[location3] && board[location1] != " "
+ end
 end
 
 def full?(board)
